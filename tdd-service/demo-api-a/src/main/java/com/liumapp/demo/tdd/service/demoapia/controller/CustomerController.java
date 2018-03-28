@@ -1,5 +1,6 @@
 package com.liumapp.demo.tdd.service.demoapia.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
 import com.liumapp.demo.tdd.engine.model.service.CustomerService;
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +31,7 @@ public class CustomerController {
             notes = "Return success info")
     public String createCustomer (@RequestBody Customer customer) {
         Long customerId = customerService.createCustomer(customer);
-        return "create user done , new userId is : " + customerId;
+        return JSON.toJSONString("create user done , new userId is : " + customerId);
     }
 
     @RequestMapping("/get")

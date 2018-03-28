@@ -23,7 +23,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Long createCustomer(Customer customer) {
-        return null;
+        customerMapper.insert(customer);
+        return customer.getId();
     }
 
     @Override
