@@ -13,4 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("fruit")
 public class FruitController {
+
+    
+
 }
