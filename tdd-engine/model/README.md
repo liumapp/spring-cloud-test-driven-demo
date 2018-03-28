@@ -1,1 +1,5 @@
 # model
+
+## how to use 
+
+* 

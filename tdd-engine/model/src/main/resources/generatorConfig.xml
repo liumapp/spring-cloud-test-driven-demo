@@ -4,7 +4,7 @@
 <generatorConfiguration>
 
     <classPathEntry
-            location="your_path/mysql-connector-java-5.1.43.jar"/>
+            location="/Users/liumeishengqi/.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar"/>
 
     <context id="common-model" targetRuntime="MyBatis3">
 
@@ -13,8 +13,8 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-        <jdbcConnection connectionURL="jdbc:mysql://ip/databasename"
-                        driverClass="com.mysql.jdbc.Driver" password="" userId="" />
+        <jdbcConnection connectionURL="jdbc:mysql://127.0.0.0.1/tdd"
+                        driverClass="com.mysql.jdbc.Driver" password="adminadmin" userId="root" />
 
         <javaModelGenerator targetPackage="com.liumapp.demo.tdd.engine.model.domain"
                             targetProject="src/main/java" >
@@ -32,7 +32,23 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="your_table_name" domainObjectName="YourTableName"
+        <table tableName="customer" domainObjectName="Customer"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"
+        ></table>
+
+        <table tableName="fruit" domainObjectName="Fruit"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"
+        ></table>
+
+        <table tableName="order" domainObjectName="Order"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"
