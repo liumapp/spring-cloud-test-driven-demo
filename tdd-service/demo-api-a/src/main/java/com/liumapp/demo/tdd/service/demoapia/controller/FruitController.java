@@ -3,8 +3,8 @@ package com.liumapp.demo.tdd.service.demoapia.controller;
 import com.alibaba.fastjson.JSON;
 import com.liumapp.demo.tdd.engine.model.domain.Fruit;
 import com.liumapp.demo.tdd.engine.model.service.FruitService;
-import com.netflix.discovery.converters.Auto;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +33,14 @@ public class FruitController {
         return JSON.toJSONString("add fruit success , and fruit id is : " + fruitService.createFruit(fruit));
     }
 
-
+    @RequestMapping(value = "/get/{id}",
+                method = RequestMethod.GET,
+                produces = {"application/json"})
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "get a fruit detail",
+                notes = "accept fruit detail , by fruit id")
+    public String getFruit (@ApiParam(value = "the ID of fruit" , required = true) @PathVariable("id") Long id) {
+        return JSON.toJSONString(fruitService.getFruitById(id));
+    }
 
 }
