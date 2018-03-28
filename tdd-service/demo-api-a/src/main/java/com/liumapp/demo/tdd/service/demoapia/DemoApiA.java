@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Import;
  * @date 3/21/18
  */
 @EnableDiscoveryClient
-@SpringBootApplication
-@Import(value = {com.liumapp.demo.tdd.engine.model.ModelConfig.class})
+@SpringBootApplication(scanBasePackages = "com.liumapp.demo.tdd")
+@Import({com.liumapp.demo.tdd.engine.model.ModelConfig.class})
 public class DemoApiA {
 
     public static void main(String[] args) {

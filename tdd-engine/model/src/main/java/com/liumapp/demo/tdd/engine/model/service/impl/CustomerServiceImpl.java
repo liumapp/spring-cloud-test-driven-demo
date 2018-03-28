@@ -1,7 +1,9 @@
 package com.liumapp.demo.tdd.engine.model.service.impl;
 
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
+import com.liumapp.demo.tdd.engine.model.mapper.CustomerMapper;
 import com.liumapp.demo.tdd.engine.model.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
  * @homepage http://www.liumapp.com
  * @date 3/28/18
  */
-@Service
 @Transactional
+@Service
 public class CustomerServiceImpl implements CustomerService {
+
+    @Autowired
+    private CustomerMapper customerMapper;
 
     @Override
     public Long createCustomer(Customer customer) {

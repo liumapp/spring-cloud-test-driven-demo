@@ -4,7 +4,9 @@ import com.liumapp.demo.tdd.engine.model.domain.Fruit;
 import com.liumapp.demo.tdd.engine.model.domain.FruitExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FruitMapper {
     int countByExample(FruitExample example);
 

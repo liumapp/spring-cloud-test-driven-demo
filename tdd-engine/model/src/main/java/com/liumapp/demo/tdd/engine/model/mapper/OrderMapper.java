@@ -4,7 +4,9 @@ import com.liumapp.demo.tdd.engine.model.domain.Order;
 import com.liumapp.demo.tdd.engine.model.domain.OrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderMapper {
     int countByExample(OrderExample example);
 
