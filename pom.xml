@@ -42,6 +42,6 @@
 	</dependencyManagement>
 
   <modules>
-
+    <module>tdd-eureka</module>
   </modules>
 </project>
