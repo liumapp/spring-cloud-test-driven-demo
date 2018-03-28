@@ -1,7 +1,12 @@
 package com.liumapp.demo.tdd.service.demoapia.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSON;
+import com.liumapp.demo.tdd.engine.model.domain.Order;
+import com.liumapp.demo.tdd.engine.model.service.OrderService;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author liumapp
@@ -13,6 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("order")
 public class OrderController {
+
+    @Autowired
+    private OrderService orderService;
+
+    @RequestMapping(value = "/add",
+                method = RequestMethod.POST,
+                produces = {"application/json"})
+    @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "add order",
+            notes = "add order by Order params")
+    public String createOrder (@RequestBody Order order) {
+        return JSON.toJSONString("add order success , and order id is : " + orderService.createOrder(order));
+    }
+
+
 
 
 
