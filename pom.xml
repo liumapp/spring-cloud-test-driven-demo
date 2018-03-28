@@ -44,5 +44,6 @@
   <modules>
     <module>tdd-eureka</module>
     <module>tdd-gateway</module>
+    <module>tdd-config-server</module>
   </modules>
 </project>
