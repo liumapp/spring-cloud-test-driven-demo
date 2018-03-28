@@ -46,6 +46,12 @@
       <artifactId>springfox-swagger-ui</artifactId>
       <version>2.5.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.liumapp.demo.tdd.engine.model</groupId>
+      <artifactId>model</artifactId>
+      <version>v1.0.0</version>
+    </dependency>
   </dependencies>
 
   <build>
