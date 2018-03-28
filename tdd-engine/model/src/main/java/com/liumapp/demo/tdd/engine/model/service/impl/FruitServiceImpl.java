@@ -1,7 +1,9 @@
 package com.liumapp.demo.tdd.engine.model.service.impl;
 
 import com.liumapp.demo.tdd.engine.model.domain.Fruit;
+import com.liumapp.demo.tdd.engine.model.mapper.FruitMapper;
 import com.liumapp.demo.tdd.engine.model.service.FruitService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,14 +18,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class FruitServiceImpl implements FruitService {
 
+    @Autowired
+    private FruitMapper fruitMapper;
+
     @Override
     public Long createFruit(Fruit fruit) {
-        return null;
+        fruitMapper.insert(fruit);
+        return fruit.getId();
     }
 
     @Override
     public Fruit getFruitById(Long fruitId) {
-        return null;
+        return fruitMapper.selectByPrimaryKey(fruitId);
     }
 
 }

@@ -1,7 +1,13 @@
 package com.liumapp.demo.tdd.service.demoapia.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSON;
+import com.liumapp.demo.tdd.engine.model.domain.Fruit;
+import com.liumapp.demo.tdd.engine.model.service.FruitService;
+import com.netflix.discovery.converters.Auto;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author liumapp
@@ -14,6 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("fruit")
 public class FruitController {
 
-    
+    @Autowired
+    private FruitService fruitService;
+
+    @RequestMapping(value = "/add",
+                method = RequestMethod.POST,
+                produces = {"application/json"})
+    @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "create a new fruit",
+                notes = "accept fruit params , and create new fruit")
+    public String createFruit (@RequestBody Fruit fruit) {
+        return JSON.toJSONString("add fruit success , and fruit id is : " + fruitService.createFruit(fruit));
+    }
+
+
 
 }

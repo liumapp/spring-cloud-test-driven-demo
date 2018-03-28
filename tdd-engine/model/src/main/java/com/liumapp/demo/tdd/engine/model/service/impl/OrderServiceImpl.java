@@ -1,7 +1,9 @@
 package com.liumapp.demo.tdd.engine.model.service.impl;
 
 import com.liumapp.demo.tdd.engine.model.domain.Order;
+import com.liumapp.demo.tdd.engine.model.mapper.OrderMapper;
 import com.liumapp.demo.tdd.engine.model.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,14 +18,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class OrderServiceImpl implements OrderService {
 
+    @Autowired
+    private OrderMapper orderMapper;
+
     @Override
     public Long createOrder(Order order) {
-        return null;
+        orderMapper.insert(order);
+        return order.getId();
     }
 
     @Override
     public Order getOrderById(Long orderId) {
-        return null;
+        return orderMapper.selectByPrimaryKey(orderId);
     }
 
 }
