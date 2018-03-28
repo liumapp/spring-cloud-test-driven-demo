@@ -42,6 +42,5 @@
 	</dependencyManagement>
   <modules>
     <module>demo-api-a</module>
-    <module>demo-api-b</module>
   </modules>
 </project>
