@@ -46,5 +46,6 @@
     <module>tdd-gateway</module>
     <module>tdd-config-server</module>
     <module>tdd-service</module>
+    <module>tdd-engine</module>
   </modules>
 </project>
