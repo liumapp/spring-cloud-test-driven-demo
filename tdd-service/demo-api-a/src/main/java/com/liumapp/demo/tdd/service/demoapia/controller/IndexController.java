@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class IndexController {
 
-    @Value("${custom.activeInfon}")
+    @Value("${custom.activeInfo}")
     private String activeInfo;
 
     @RequestMapping("")
