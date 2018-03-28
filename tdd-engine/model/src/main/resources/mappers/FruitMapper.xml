@@ -98,7 +98,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.liumapp.demo.tdd.engine.model.domain.Fruit" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.liumapp.demo.tdd.engine.model.domain.Fruit" >
     insert into fruit (id, name, price
       )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}
