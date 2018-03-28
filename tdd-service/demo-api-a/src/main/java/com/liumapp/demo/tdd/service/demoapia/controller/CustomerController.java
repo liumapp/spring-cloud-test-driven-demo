@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
 import com.liumapp.demo.tdd.engine.model.service.CustomerService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +35,15 @@ public class CustomerController {
         return JSON.toJSONString("create user done , new userId is : " + customerId);
     }
 
-    @RequestMapping("/get")
-    public ResponseEntity<?> getCustomer () {
-        return ResponseEntity.ok("select customer info , detail is : ");
+    @RequestMapping(value = "/get/{id}",
+            method = RequestMethod.GET,
+            produces = {"application/json"})
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "get a customer detail info",
+            notes = "return a customer detail by id")
+    public String getCustomer (@ApiParam(value = "The ID of the customer.", required = true)
+                                              @PathVariable("id") Long id) {
+        return JSON.toJSONString(customerService.getCustomerById(id));
     }
 
 }
