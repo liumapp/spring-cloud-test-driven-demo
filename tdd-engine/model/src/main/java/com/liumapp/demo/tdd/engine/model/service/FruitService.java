@@ -11,8 +11,8 @@ import com.liumapp.demo.tdd.engine.model.domain.Fruit;
  */
 public interface FruitService {
 
-    public Integer createFruit (Fruit fruit);
+    public Long createFruit (Fruit fruit);
 
-    public Fruit getFruitById (Integer fruitId);
+    public Fruit getFruitById (Long fruitId);
 
 }

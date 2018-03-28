@@ -11,9 +11,9 @@ import com.liumapp.demo.tdd.engine.model.domain.Customer;
  */
 public interface CustomerService {
 
-    public Integer createCustomer (Customer customer);
+    public Long createCustomer (Customer customer);
 
-    public Customer getCustomerById (Integer customerId);
+    public Customer getCustomerById (Long customerId);
 
     public Customer getCustomerByName (String name);
 
