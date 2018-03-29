@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author liumapp
  * @file FruitServiceImpl.java
@@ -30,6 +32,12 @@ public class FruitServiceImpl implements FruitService {
     @Override
     public Fruit getFruitById(Long fruitId) {
         return fruitMapper.selectByPrimaryKey(fruitId);
+    }
+
+    @Override
+    public List<Fruit> getFruitList() {
+        
+        return null;
     }
 
 }

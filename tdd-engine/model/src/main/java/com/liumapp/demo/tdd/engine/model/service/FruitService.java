@@ -2,6 +2,8 @@ package com.liumapp.demo.tdd.engine.model.service;
 
 import com.liumapp.demo.tdd.engine.model.domain.Fruit;
 
+import java.util.List;
+
 /**
  * @author liumapp
  * @file FruitService.java
@@ -14,5 +16,7 @@ public interface FruitService {
     public Long createFruit (Fruit fruit);
 
     public Fruit getFruitById (Long fruitId);
+
+    public List<Fruit> getFruitList ();
 
 }

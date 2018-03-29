@@ -43,4 +43,15 @@ public class FruitController {
         return JSON.toJSONString(fruitService.getFruitById(id));
     }
 
+    @RequestMapping(value = "/list",
+                method = RequestMethod.GET,
+                produces = {"application/json"})
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "get a fruit list",
+                notes = "accept fruit list detail , by nothing need")
+    public String getFruitList () {
+        
+        return "success";
+    }
+
 }
