@@ -25,6 +25,7 @@ import java.util.zip.DataFormatException;
 public abstract class ApiHandler implements ApplicationEventPublisherAware {
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
+
     protected ApplicationEventPublisher eventPublisher;
 
     protected static final String  DEFAULT_PAGE_SIZE = "100";
