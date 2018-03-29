@@ -37,4 +37,11 @@ public class CustomerServiceImpl implements CustomerService {
         return null;
     }
 
+    @Override
+    public boolean deleteCustomerById(Long customerId) {
+        if (customerMapper.deleteByPrimaryKey(customerId) != 0)
+            return true;
+        return false;
+    }
+
 }

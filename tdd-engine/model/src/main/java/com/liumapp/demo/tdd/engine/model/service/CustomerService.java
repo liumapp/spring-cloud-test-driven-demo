@@ -17,4 +17,6 @@ public interface CustomerService {
 
     public Customer getCustomerByName (String name);
 
+    public boolean deleteCustomerById (Long customerId);
+
 }
