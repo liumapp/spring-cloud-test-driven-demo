@@ -36,7 +36,6 @@ public class FruitServiceImpl implements FruitService {
 
     @Override
     public List<Fruit> getFruitList() {
-        
         return null;
     }
 

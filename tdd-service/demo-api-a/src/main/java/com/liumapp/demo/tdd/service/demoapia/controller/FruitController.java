@@ -50,7 +50,6 @@ public class FruitController {
     @ApiOperation(value = "get a fruit list",
                 notes = "accept fruit list detail , by nothing need")
     public String getFruitList () {
-        
         return "success";
     }
 
