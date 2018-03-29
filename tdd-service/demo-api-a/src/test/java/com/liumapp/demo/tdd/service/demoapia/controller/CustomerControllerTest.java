@@ -42,8 +42,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = DemoApiA.class)
 public class CustomerControllerTest {
 
-    private static final String RESOURCE_LOCATION_PATTERN = "http://localhost:8081/customer/[0-9]+";
-
     @InjectMocks
     private CustomerController customerController;
 
@@ -72,7 +70,6 @@ public class CustomerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-//                .andExpect(redirectedUrlPattern(RESOURCE_LOCATION_PATTERN))
                 .andReturn();
         String content = result.getResponse().getContentAsString();
         resEntity = JSON.parseObject(content , ResEntity.class);
@@ -81,7 +78,7 @@ public class CustomerControllerTest {
         //RETRIEVE
         mockMvc.perform(get("/customer/get/" + id)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().isAccepted())
                 .andExpect(jsonPath("$.id", is((int) id)))
                 .andExpect(jsonPath("$.name", is(r1.getName())))
                 .andExpect(jsonPath("$.sex", is(r1.getSex())));
@@ -89,7 +86,7 @@ public class CustomerControllerTest {
         //DELETE
         mockMvc.perform(delete("/customer/delete/" + id)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isAccepted());
 
         //RETRIEVE should fail
         mockMvc.perform(get("/customer/get/" + id)
