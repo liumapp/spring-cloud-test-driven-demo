@@ -2,6 +2,8 @@ package com.liumapp.demo.tdd.engine.model.service.impl;
 
 import com.liumapp.demo.tdd.engine.model.domain.Order;
 import com.liumapp.demo.tdd.engine.model.entity.FullOrder;
+import com.liumapp.demo.tdd.engine.model.mapper.CustomerMapper;
+import com.liumapp.demo.tdd.engine.model.mapper.FruitMapper;
 import com.liumapp.demo.tdd.engine.model.mapper.OrderMapper;
 import com.liumapp.demo.tdd.engine.model.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
+    @Autowired
+    private CustomerMapper customerMapper;
+
+    @Autowired
+    private FruitMapper fruitMapper;
+
     @Override
     public Long createOrder(Order order) {
         orderMapper.insert(order);
@@ -35,7 +43,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public FullOrder getFullOrder(Long orderId) {
-        return null;
+        FullOrder fullOrder = new FullOrder();
+        fullOrder.setOrder(orderMapper.selectByPrimaryKey(orderId));
+        fullOrder.setCustomer(customerMapper.selectByPrimaryKey(
+                fullOrder.getOrder().getCustomerid()
+        ));
+        fullOrder.setFruit(fruitMapper.selectByPrimaryKey(
+                fullOrder.getOrder().getFruitid()
+        ));
+        return fullOrder;
     }
 
 }

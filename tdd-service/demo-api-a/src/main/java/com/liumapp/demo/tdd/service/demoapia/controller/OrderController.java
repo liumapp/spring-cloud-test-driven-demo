@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 /**
  * @author liumapp
  * @file OrderController.java
@@ -40,8 +42,10 @@ public class OrderController {
     @ApiOperation(value = "get order detail",
                 notes = "get order detail according to orderId , this will also included customer and fruit detail")
     public String getOrder (@ApiParam(value = "the id of order",required = true) @PathVariable("id") Long id) {
-        
-        return "success";
+        HashMap<String , Object> hashMap = new HashMap<String , Object>();
+        hashMap.put("msg" , "get full order info success");
+        hashMap.put("content" , orderService.getFullOrder(id));
+        return JSON.toJSONString(hashMap);
     }
 
 
