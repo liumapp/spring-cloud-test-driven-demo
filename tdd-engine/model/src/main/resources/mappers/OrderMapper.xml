@@ -100,7 +100,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.liumapp.demo.tdd.engine.model.domain.Order" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.liumapp.demo.tdd.engine.model.domain.Order" >
     insert into `order` (id, customerId, fruitId,
       weight, price)
     values (#{id,jdbcType=BIGINT}, #{customerid,jdbcType=BIGINT}, #{fruitid,jdbcType=BIGINT}, 
