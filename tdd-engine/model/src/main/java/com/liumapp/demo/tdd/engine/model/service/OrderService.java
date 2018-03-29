@@ -1,6 +1,7 @@
 package com.liumapp.demo.tdd.engine.model.service;
 
 import com.liumapp.demo.tdd.engine.model.domain.Order;
+import com.liumapp.demo.tdd.engine.model.entity.FullOrder;
 
 /**
  * @author liumapp
@@ -14,5 +15,7 @@ public interface OrderService {
     public Long createOrder (Order order);
 
     public Order getOrderById (Long orderId);
+
+    public FullOrder getFullOrder (Long orderId);
 
 }

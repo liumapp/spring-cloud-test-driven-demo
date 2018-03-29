@@ -1,6 +1,7 @@
 package com.liumapp.demo.tdd.engine.model.service.impl;
 
 import com.liumapp.demo.tdd.engine.model.domain.Order;
+import com.liumapp.demo.tdd.engine.model.entity.FullOrder;
 import com.liumapp.demo.tdd.engine.model.mapper.OrderMapper;
 import com.liumapp.demo.tdd.engine.model.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderById(Long orderId) {
         return orderMapper.selectByPrimaryKey(orderId);
+    }
+
+    @Override
+    public FullOrder getFullOrder(Long orderId) {
+        return null;
     }
 
 }
