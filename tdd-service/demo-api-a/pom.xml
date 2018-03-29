@@ -52,6 +52,11 @@
       <artifactId>model</artifactId>
       <version>v1.0.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.liumapp.demo.tdd.engine.toola</groupId>
+      <artifactId>tool-a</artifactId>
+      <version>v1.0.0</version>
+    </dependency>
 
     <dependency>
       <groupId>com.alibaba</groupId>

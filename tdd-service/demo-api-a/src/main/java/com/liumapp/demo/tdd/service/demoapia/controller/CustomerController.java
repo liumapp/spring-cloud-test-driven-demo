@@ -34,6 +34,7 @@ public class CustomerController {
             notes = "Return success info")
     public String createCustomer (@RequestBody Customer customer) {
         Long customerId = customerService.createCustomer(customer);
+        
         return JSON.toJSONString("create user done , new userId is : " + customerId);
     }
 
