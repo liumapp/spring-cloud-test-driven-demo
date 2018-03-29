@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
 import com.liumapp.demo.tdd.engine.model.service.CustomerService;
 import com.liumapp.demo.tdd.engine.toola.entity.ResEntity;
+import com.liumapp.demo.tdd.engine.toola.exception.ResourceNotFoundException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,8 +53,11 @@ public class CustomerController {
     @ApiOperation(value = "get a customer detail info",
             notes = "return a customer detail by id")
     public String getCustomer (@ApiParam(value = "The ID of the customer.", required = true)
-                                              @PathVariable("id") Long id) {
-        return JSON.toJSONString(customerService.getCustomerById(id));
+                                              @PathVariable("id") Long id) throws Exception {
+        Customer customer = customerService.getCustomerById(id);
+        if (customer == null)
+            throw new ResourceNotFoundException("customer not found");
+        return JSON.toJSONString(customer);
     }
 
     @RequestMapping(value = "/delete/{id}",

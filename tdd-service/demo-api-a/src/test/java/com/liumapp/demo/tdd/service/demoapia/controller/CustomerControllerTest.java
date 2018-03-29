@@ -1,7 +1,6 @@
 package com.liumapp.demo.tdd.service.demoapia.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
 import com.liumapp.demo.tdd.engine.toola.entity.ResEntity;
@@ -17,15 +16,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.regex.Pattern;
-
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertTrue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -85,7 +79,7 @@ public class CustomerControllerTest {
                 .andReturn();
 
         //DELETE
-        MvcResult result3 = mockMvc.perform(delete("/customer/delete/" + id)
+        MvcResult result3 = mockMvc.perform(get("/customer/delete/" + id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isAccepted())
                 .andReturn();
