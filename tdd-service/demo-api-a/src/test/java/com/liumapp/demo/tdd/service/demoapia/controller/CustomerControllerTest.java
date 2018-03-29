@@ -79,11 +79,12 @@ public class CustomerControllerTest {
                 .andExpect(jsonPath("$.sex", is(r1.getSex())));
 
         //DELETE
-        mockMvc.perform(delete("/example/v1/hotels/" + id))
-                .andExpect(status().isNoContent());
+        mockMvc.perform(delete("/customer/delete/" + id)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
 
         //RETRIEVE should fail
-        mockMvc.perform(get("/example/v1/hotels/" + id)
+        mockMvc.perform(get("/customer/get/" + id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
 
