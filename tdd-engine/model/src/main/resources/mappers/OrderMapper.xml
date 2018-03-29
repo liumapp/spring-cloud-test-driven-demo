@@ -76,7 +76,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,29 +85,29 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from order
+    delete from `order`
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.liumapp.demo.tdd.engine.model.domain.OrderExample" >
-    delete from order
+    delete from `order`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.liumapp.demo.tdd.engine.model.domain.Order" >
-    insert into order (id, customerId, fruitId, 
+  <insert id="insert" parameterType="com.liumapp.demo.tdd.engine.model.domain.Order" >
+    insert into `order` (id, customerId, fruitId,
       weight, price)
     values (#{id,jdbcType=BIGINT}, #{customerid,jdbcType=BIGINT}, #{fruitid,jdbcType=BIGINT}, 
       #{weight,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.liumapp.demo.tdd.engine.model.domain.Order" >
-    insert into order
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -144,13 +144,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.liumapp.demo.tdd.engine.model.domain.OrderExample" resultType="java.lang.Integer" >
-    select count(*) from order
+    select count(*) from `order`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update order
+    update `order`
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
@@ -173,18 +173,18 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update order
+    update `order`
     set id = #{record.id,jdbcType=BIGINT},
-      customerId = #{record.customerid,jdbcType=BIGINT},
-      fruitId = #{record.fruitid,jdbcType=BIGINT},
-      weight = #{record.weight,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=DECIMAL}
+    customerId = #{record.customerid,jdbcType=BIGINT},
+    fruitId = #{record.fruitid,jdbcType=BIGINT},
+    weight = #{record.weight,jdbcType=VARCHAR},
+    price = #{record.price,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.liumapp.demo.tdd.engine.model.domain.Order" >
-    update order
+    update `order`
     <set >
       <if test="customerid != null" >
         customerId = #{customerid,jdbcType=BIGINT},
@@ -202,7 +202,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.liumapp.demo.tdd.engine.model.domain.Order" >
-    update order
+    update `order`
     set customerId = #{customerid,jdbcType=BIGINT},
       fruitId = #{fruitid,jdbcType=BIGINT},
       weight = #{weight,jdbcType=VARCHAR},
