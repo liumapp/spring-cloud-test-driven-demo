@@ -46,6 +46,18 @@ public class CustomerController {
         return JSON.toJSONString(customerService.getCustomerById(id));
     }
 
-
+    @RequestMapping(value = "/delete/{id}",
+                method = RequestMethod.GET,
+                produces = {"application/json"})
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "del a customer",
+            notes = "del a customer according to customer id")
+    public String delCustomer (@ApiParam(value = "The id of the customer.",required = true)
+                                                @PathVariable("id") Long id) {
+        String result = "delete failed";
+        if (customerService.deleteCustomerById(id))
+            result = "delete success";
+        return JSON.toJSONString(result);
+    }
 
 }
