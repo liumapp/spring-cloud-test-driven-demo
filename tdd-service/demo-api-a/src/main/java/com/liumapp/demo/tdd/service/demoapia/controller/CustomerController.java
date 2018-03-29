@@ -24,7 +24,7 @@ import java.util.HashMap;
  */
 @RestController
 @RequestMapping("customer")
-public class CustomerController {
+public class CustomerController extends ApiHandler {
 
     @Autowired
     private CustomerService customerService;
@@ -55,8 +55,7 @@ public class CustomerController {
     public String getCustomer (@ApiParam(value = "The ID of the customer.", required = true)
                                               @PathVariable("id") Long id) throws Exception {
         Customer customer = customerService.getCustomerById(id);
-        if (customer == null)
-            throw new ResourceNotFoundException("customer not found");
+        checkResourceFound(customer);
         return JSON.toJSONString(customer);
     }
 
