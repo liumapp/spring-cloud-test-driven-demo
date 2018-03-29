@@ -76,17 +76,19 @@ public class CustomerControllerTest {
         long id = Long.parseLong(resEntity.getContent());
 
         //RETRIEVE
-        mockMvc.perform(get("/customer/get/" + id)
+        MvcResult result2 = mockMvc.perform(get("/customer/get/" + id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isAccepted())
                 .andExpect(jsonPath("$.id", is((int) id)))
                 .andExpect(jsonPath("$.name", is(r1.getName())))
-                .andExpect(jsonPath("$.sex", is(r1.getSex())));
+                .andExpect(jsonPath("$.sex", is(r1.getSex())))
+                .andReturn();
 
         //DELETE
-        mockMvc.perform(delete("/customer/delete/" + id)
+        MvcResult result3 = mockMvc.perform(delete("/customer/delete/" + id)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isAccepted());
+                .andExpect(status().isAccepted())
+                .andReturn();
 
         //RETRIEVE should fail
         mockMvc.perform(get("/customer/get/" + id)
