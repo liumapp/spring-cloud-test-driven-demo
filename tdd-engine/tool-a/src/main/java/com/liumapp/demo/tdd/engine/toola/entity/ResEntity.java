@@ -11,9 +11,10 @@ import java.io.Serializable;
  * @homepage http://www.liumapp.com
  * @date 3/29/18
  */
+@Component
 public class ResEntity implements Serializable {
 
-    private String code;
+    private Integer code;
 
     private String msg;
 
@@ -22,18 +23,22 @@ public class ResEntity implements Serializable {
     public ResEntity() {
     }
 
-    public ResEntity(String code, String msg, String content) {
+    public ResEntity(Integer code, String msg, String content) {
         this.code = code;
         this.msg = msg;
         this.content = content;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public String getMsg() {
@@ -44,9 +49,6 @@ public class ResEntity implements Serializable {
         this.msg = msg;
     }
 
-    public String getContent() {
-        return content;
-    }
 
     public void setContent(String content) {
         this.content = content;

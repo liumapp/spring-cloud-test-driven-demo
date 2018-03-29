@@ -1,7 +1,10 @@
 package com.liumapp.demo.tdd.service.demoapia.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
+import com.liumapp.demo.tdd.engine.toola.entity.ResEntity;
 import com.liumapp.demo.tdd.service.demoapia.DemoApiA;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +50,9 @@ public class CustomerControllerTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
 
+    @Autowired
+    private ResEntity resEntity;
+
     private MockMvc mockMvc;
 
     @Before
@@ -68,7 +74,9 @@ public class CustomerControllerTest {
                 .andExpect(status().isCreated())
 //                .andExpect(redirectedUrlPattern(RESOURCE_LOCATION_PATTERN))
                 .andReturn();
-        long id = getResourceIdFromUrl(result.getResponse().getRedirectedUrl());
+        String content = result.getResponse().getContentAsString();
+        resEntity = JSON.parseObject(content , ResEntity.class);
+        long id = Long.parseLong(resEntity.getContent());
 
         //RETRIEVE
         mockMvc.perform(get("/customer/get/" + id)
@@ -101,21 +109,6 @@ public class CustomerControllerTest {
     private byte[] toJson(Object r) throws Exception {
         ObjectMapper map = new ObjectMapper();
         return map.writeValueAsString(r).getBytes();
-    }
-
-    // match redirect header URL (aka Location header)
-    private static ResultMatcher redirectedUrlPattern(final String expectedUrlPattern) {
-        return new ResultMatcher() {
-            public void match(MvcResult result) {
-                Pattern pattern = Pattern.compile("\\A" + expectedUrlPattern + "\\z");
-                assertTrue(pattern.matcher(result.getResponse().getRedirectedUrl()).find());
-            }
-        };
-    }
-
-    private long getResourceIdFromUrl(String locationUrl) {
-        String[] parts = locationUrl.split("/");
-        return Long.valueOf(parts[parts.length - 1]);
     }
 
 }

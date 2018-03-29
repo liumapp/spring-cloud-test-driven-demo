@@ -18,7 +18,8 @@ import org.springframework.context.annotation.Import;
  */
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.liumapp.demo.tdd")
-@Import({com.liumapp.demo.tdd.engine.model.ModelConfig.class})
+@Import({com.liumapp.demo.tdd.engine.model.ModelConfig.class,
+        com.liumapp.demo.tdd.engine.toola.ToolAConfig.class})
 public class DemoApiA extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

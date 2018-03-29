@@ -3,6 +3,7 @@ package com.liumapp.demo.tdd.service.demoapia.controller;
 import com.alibaba.fastjson.JSON;
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
 import com.liumapp.demo.tdd.engine.model.service.CustomerService;
+import com.liumapp.demo.tdd.engine.toola.entity.ResEntity;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private ResEntity resEntity;
+
     @RequestMapping(value = "/create",
             method = RequestMethod.POST,
             produces = {"application/json"})
@@ -34,8 +38,10 @@ public class CustomerController {
             notes = "Return success info")
     public String createCustomer (@RequestBody Customer customer) {
         Long customerId = customerService.createCustomer(customer);
-        
-        return JSON.toJSONString("create user done , new userId is : " + customerId);
+        resEntity.setCode(200);
+        resEntity.setMsg("create user done");
+        resEntity.setContent(customerId.toString());
+        return JSON.toJSONString(resEntity);
     }
 
     @RequestMapping(value = "/get/{id}",

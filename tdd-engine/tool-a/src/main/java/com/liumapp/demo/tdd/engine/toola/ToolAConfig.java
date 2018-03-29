@@ -1,5 +1,6 @@
 package com.liumapp.demo.tdd.engine.toola;
 
+import com.liumapp.demo.tdd.engine.toola.entity.ResEntity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -13,5 +14,9 @@ import org.springframework.context.annotation.Import;
 @Configuration
 public class ToolAConfig {
 
+    @Bean
+    public ResEntity resEntity() {
+        return new ResEntity();
+    }
 
 }
