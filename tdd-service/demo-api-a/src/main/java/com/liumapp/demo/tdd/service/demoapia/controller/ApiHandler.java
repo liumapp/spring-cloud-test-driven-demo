@@ -28,15 +28,11 @@ public abstract class ApiHandler implements ApplicationEventPublisherAware {
 
     protected ApplicationEventPublisher eventPublisher;
 
-    protected static final String  DEFAULT_PAGE_SIZE = "100";
-    protected static final String DEFAULT_PAGE_NUM = "0";
-
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DataFormatException.class)
     @ResponseBody
     public RestErrorInfo handleDataStoreException(DataFormatException ex, WebRequest request, HttpServletResponse response) {
         log.info("Converting Data Store exception to RestResponse : " + ex.getMessage());
-
         return new RestErrorInfo(ex, "You messed up.");
     }
 
@@ -45,7 +41,6 @@ public abstract class ApiHandler implements ApplicationEventPublisherAware {
     @ResponseBody
     public RestErrorInfo handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request, HttpServletResponse response) {
         log.info("ResourceNotFoundException handler:" + ex.getMessage());
-
         return new RestErrorInfo(ex, "Sorry I couldn't find it.");
     }
 

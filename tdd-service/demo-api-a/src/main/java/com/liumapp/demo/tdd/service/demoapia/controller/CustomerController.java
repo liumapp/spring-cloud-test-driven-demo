@@ -4,16 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.liumapp.demo.tdd.engine.model.domain.Customer;
 import com.liumapp.demo.tdd.engine.model.service.CustomerService;
 import com.liumapp.demo.tdd.engine.toola.entity.ResEntity;
-import com.liumapp.demo.tdd.engine.toola.exception.ResourceNotFoundException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 
 /**
  * @author liumapp
@@ -36,8 +32,8 @@ public class CustomerController extends ApiHandler {
             method = RequestMethod.POST,
             produces = {"application/json"})
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation(value = "Create a customer.",
-            notes = "Return success info")
+    @ApiOperation(value = "这是简要的说明",
+            notes = "这是详细的说明，name代表消费者的姓名，sex代表性别，添加时不需要加id")
     public String createCustomer (@RequestBody Customer customer) {
         Long customerId = customerService.createCustomer(customer);
         resEntity.setCode(200);

@@ -8,11 +8,14 @@ spring:
         serviceId: tdd-config-server
       profile: dev
       label: master
+
 server:
   port: 8081
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:1234/eureka/
+
+
 
 
